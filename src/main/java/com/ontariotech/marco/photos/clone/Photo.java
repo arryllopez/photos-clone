@@ -3,6 +3,8 @@ package com.ontariotech.marco.photos.clone;
 public class Photo {
 
     private String id;
+
+    @NotEmpty
     private String fileName;
 
     //raw data
