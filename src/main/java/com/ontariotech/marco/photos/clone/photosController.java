@@ -2,16 +2,13 @@ package com.ontariotech.marco.photos.clone;
 
 //spring looks at all
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 public class photosController {
@@ -47,7 +44,7 @@ public class photosController {
 
     @DeleteMapping("/photos {id}")
     public void delete(@PathVariable String id) {
-        //get method returns the list of photos
+        //db.remove()
         Photo photo = db.remove(id);
         // error catching
         if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -55,5 +52,14 @@ public class photosController {
     }
 
     //create PostMapping methods next
+    @PostMapping("/photos/")
+    public Photo create(Photo photo)  {
+        photo.setId(UUID.randomUUID().toString());
+        //db.put()
+        db.put(photo.getId(), photo);
+        // error catching
+        return photo;
+
+    }
 
 }
