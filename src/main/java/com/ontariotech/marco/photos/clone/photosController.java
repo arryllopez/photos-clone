@@ -55,7 +55,7 @@ public class photosController {
     }
 
     //create PostMapping methods next
-    @PostMapping("/photos/")
+    @PostMapping("/photos")
     public Photo create(@RequestPart("data") MultipartFile file) throws IOException {
         Photo photo = new Photo();
         photo.setId(UUID.randomUUID().toString());
