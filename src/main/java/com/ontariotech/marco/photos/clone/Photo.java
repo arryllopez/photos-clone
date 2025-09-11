@@ -1,5 +1,7 @@
 package com.ontariotech.marco.photos.clone;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Photo {
 
     private String id;
@@ -7,7 +9,14 @@ public class Photo {
     @NotEmpty
     private String fileName;
 
+    private byte[] data;
+
     //raw data
+
+
+    public byte[] getData() {
+        return data;
+    }
 
     //empty constructor
     public Photo() {
@@ -34,5 +43,9 @@ public class Photo {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public void setData(byte[] bytes) {
+        this.data = bytes;
     }
 }
