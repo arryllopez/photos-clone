@@ -1,4 +1,4 @@
-package com.ontariotech.marco.photos.clone;
+package com.ontariotech.marco.photos.clone.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
@@ -9,6 +9,8 @@ public class Photo {
 
     @NotEmpty
     private String fileName;
+
+    private String contentType
 
     @JsonIgnore
     private byte[] data;
@@ -31,6 +33,11 @@ public class Photo {
     }
 
     //getters and setters
+
+    public String getContentType() {
+        return contentType;
+    }
+
     public String getId() {
         return id;
     }
